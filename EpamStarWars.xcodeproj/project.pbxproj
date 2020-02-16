@@ -9,21 +9,31 @@
 /* Begin PBXBuildFile section */
 		1E2246B423F9690D001F4EC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2246B323F9690D001F4EC7 /* AppDelegate.swift */; };
 		1E2246B623F9690D001F4EC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2246B523F9690D001F4EC7 /* SceneDelegate.swift */; };
-		1E2246B823F9690D001F4EC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2246B723F9690D001F4EC7 /* ViewController.swift */; };
 		1E2246BB23F9690D001F4EC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E2246B923F9690D001F4EC7 /* Main.storyboard */; };
 		1E2246BD23F96914001F4EC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E2246BC23F96914001F4EC7 /* Assets.xcassets */; };
 		1E2246C023F96914001F4EC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E2246BE23F96914001F4EC7 /* LaunchScreen.storyboard */; };
+		1E2246C923F96CF9001F4EC7 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2246C723F96CF9001F4EC7 /* MainTableViewController.swift */; };
+		1E2246D723F98172001F4EC7 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2246D523F98172001F4EC7 /* SearchCell.swift */; };
+		1E2246D823F98172001F4EC7 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E2246D623F98172001F4EC7 /* SearchCell.xib */; };
+		1E7A7C4D23F9E22600794E71 /* Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7C4C23F9E22600794E71 /* Domain.swift */; };
+		1E7A7C5223F9E50D00794E71 /* TestDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7C5123F9E50D00794E71 /* TestDataProvider.swift */; };
+		1E7A7C5423F9E8DF00794E71 /* DetailedInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7C5323F9E8DF00794E71 /* DetailedInfoController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1E2246B023F9690D001F4EC7 /* EpamStarWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EpamStarWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E2246B323F9690D001F4EC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E2246B523F9690D001F4EC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1E2246B723F9690D001F4EC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1E2246BA23F9690D001F4EC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1E2246BC23F96914001F4EC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E2246BF23F96914001F4EC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E2246C123F96914001F4EC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E2246C723F96CF9001F4EC7 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		1E2246D523F98172001F4EC7 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		1E2246D623F98172001F4EC7 /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
+		1E7A7C4C23F9E22600794E71 /* Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
+		1E7A7C5123F9E50D00794E71 /* TestDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataProvider.swift; sourceTree = "<group>"; };
+		1E7A7C5323F9E8DF00794E71 /* DetailedInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +66,52 @@
 		1E2246B223F9690D001F4EC7 /* EpamStarWars */ = {
 			isa = PBXGroup;
 			children = (
+				1E7A7C5023F9E4F900794E71 /* Services */,
+				1E7A7C4E23F9E4D700794E71 /* Domain */,
+				1E2246CC23F980D7001F4EC7 /* Controllers */,
+				1E2246CB23F980CA001F4EC7 /* UI */,
 				1E2246B323F9690D001F4EC7 /* AppDelegate.swift */,
 				1E2246B523F9690D001F4EC7 /* SceneDelegate.swift */,
-				1E2246B723F9690D001F4EC7 /* ViewController.swift */,
-				1E2246B923F9690D001F4EC7 /* Main.storyboard */,
 				1E2246BC23F96914001F4EC7 /* Assets.xcassets */,
 				1E2246BE23F96914001F4EC7 /* LaunchScreen.storyboard */,
 				1E2246C123F96914001F4EC7 /* Info.plist */,
 			);
 			path = EpamStarWars;
+			sourceTree = "<group>";
+		};
+		1E2246CB23F980CA001F4EC7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1E2246D523F98172001F4EC7 /* SearchCell.swift */,
+				1E2246D623F98172001F4EC7 /* SearchCell.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		1E2246CC23F980D7001F4EC7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1E2246B923F9690D001F4EC7 /* Main.storyboard */,
+				1E2246C723F96CF9001F4EC7 /* MainTableViewController.swift */,
+				1E7A7C5323F9E8DF00794E71 /* DetailedInfoController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1E7A7C4E23F9E4D700794E71 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				1E7A7C4C23F9E22600794E71 /* Domain.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		1E7A7C5023F9E4F900794E71 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1E7A7C5123F9E50D00794E71 /* TestDataProvider.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E2246C023F96914001F4EC7 /* LaunchScreen.storyboard in Resources */,
+				1E2246D823F98172001F4EC7 /* SearchCell.xib in Resources */,
 				1E2246BD23F96914001F4EC7 /* Assets.xcassets in Resources */,
 				1E2246BB23F9690D001F4EC7 /* Main.storyboard in Resources */,
 			);
@@ -138,9 +186,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E2246B823F9690D001F4EC7 /* ViewController.swift in Sources */,
+				1E2246C923F96CF9001F4EC7 /* MainTableViewController.swift in Sources */,
+				1E7A7C4D23F9E22600794E71 /* Domain.swift in Sources */,
+				1E2246D723F98172001F4EC7 /* SearchCell.swift in Sources */,
 				1E2246B423F9690D001F4EC7 /* AppDelegate.swift in Sources */,
+				1E7A7C5223F9E50D00794E71 /* TestDataProvider.swift in Sources */,
 				1E2246B623F9690D001F4EC7 /* SceneDelegate.swift in Sources */,
+				1E7A7C5423F9E8DF00794E71 /* DetailedInfoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +339,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SUXRCZ8424;
 				INFOPLIST_FILE = EpamStarWars/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,6 +358,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SUXRCZ8424;
 				INFOPLIST_FILE = EpamStarWars/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
