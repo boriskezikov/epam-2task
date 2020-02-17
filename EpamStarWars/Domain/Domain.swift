@@ -49,9 +49,9 @@ struct CharacterDTO: Decodable{
     }
     
     init(){
-        self.birthYear = "22BB"
-        self.name = "Boris"
-        self.height = "285"
+        self.birthYear = ""
+        self.name = ""
+        self.height = ""
         self.mass = ""
         self.gender = ""
         self.eyeColor = ""

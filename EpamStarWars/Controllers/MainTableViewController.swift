@@ -8,23 +8,39 @@
 
 import UIKit
 
-class MainTableViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
+class MainTableViewController: UIViewController, UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate {
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var tableView: UITableView!
     
-    var heroes_V2: [CharacterDTO] = []
+    var jsonData: [CharacterDTO] = []
+    
+    var filteredHeroes: [CharacterDTO]!
+    
+    var selectedRow: IndexPath!
+           
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getData()
+        searchBar.delegate = self
+        filteredHeroes = jsonData
         self.view.backgroundColor = UIColor.white
         self.navigationItem.title = "Star wars demo v 1.0"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        
+        registerCell()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        registerCell()
+        loadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredHeroes = searchText.isEmpty ? jsonData : jsonData.filter { (item: CharacterDTO) -> Bool in
+            return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        
+        tableView.reloadData()
     }
     
     private func registerCell() {
@@ -34,7 +50,7 @@ class MainTableViewController: UIViewController, UITableViewDataSource,UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as? SearchCell{
-            cell.nameLabel.text = heroes_V2[indexPath.row].name
+            cell.nameLabel.text = filteredHeroes[indexPath.row].name
             cell.typeLabel.text = "Сharacter"
             return cell
         }
@@ -42,7 +58,7 @@ class MainTableViewController: UIViewController, UITableViewDataSource,UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return heroes_V2.count
+        return filteredHeroes.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -54,6 +70,7 @@ class MainTableViewController: UIViewController, UITableViewDataSource,UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedRow = indexPath
         performSegue(withIdentifier: "showHeroCard", sender: self)
     }
     
@@ -62,39 +79,26 @@ class MainTableViewController: UIViewController, UITableViewDataSource,UITableVi
         switch segue.identifier {
         case "showHeroCard":
             let vc = segue.destination as! DetailedInfoController
-            vc.name = heroes_V2[1].name
+            vc.name = filteredHeroes[selectedRow.row].name
+            vc.character = filteredHeroes[selectedRow.row]
         default:
             break
         }
     }
     
-    private func getData() {
+    private func loadData() {
         let url = URL(string: "https://swapi.co/api/people")
         let task = URLSession.shared.dataTask(with: url!) {data, response,error in
             if error != nil {
-                print("Problem")
+                print(error?.localizedDescription as Any)
             }
-            self.heroes_V2 = self.mapArray(json: data!)
-            print(self.heroes_V2)
+            self.jsonData = RowMapper.mapArray(json: data!)
+            print(self.jsonData)
         }
         task.resume()
     }
     
-    private func mapArray(json:Data)-> [CharacterDTO]{
-        var hero:[CharacterDTO] = []
-        do{
-            let jsonDencoder = JSONDecoder()
-            let resp = try jsonDencoder.decode(ApiResponse.self, from: json)
-            hero = resp.characters
-        }
-        catch let error as DecodingError{
-            print(error)
-        }
-        catch{
-            
-        }
-        return hero
-        
-        
-    }
+    
 }
+
+
