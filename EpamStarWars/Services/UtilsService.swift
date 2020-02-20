@@ -9,20 +9,8 @@
 import Foundation
 
 
-class TestDataProvider{
-    static func generateTestData(count:Int)->[String]{
-        var array:[String] = []
-        for i in  1...count  {
-            let tmp = "Dart Vaider" + String(i)
-            array.append(tmp)
-        }
-        return array
-    
-    }
-}
 
-class RowMapper{
-    
+class UtilsService{
     public static func mapArray(json:Data)-> [CharacterDTO]{
         var hero:[CharacterDTO] = []
         do{
@@ -37,5 +25,8 @@ class RowMapper{
         }
         return hero
     }
-    
+    public static func checkIfPresent(string:String)->Bool{
+        return string == "n/a"
+    }
+
 }

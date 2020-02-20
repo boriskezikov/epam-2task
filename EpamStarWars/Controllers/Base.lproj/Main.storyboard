@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ePv-7d-H40">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ePv-7d-H40">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -72,26 +72,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Y3-ch-i1u">
-                                <rect key="frame" x="0.0" y="122" width="414" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Y3-ch-i1u">
+                                <rect key="frame" x="0.0" y="123" width="414" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="29I-sB-LIx">
-                                <rect key="frame" x="0.0" y="184" width="414" height="598"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ViZ-9v-ggP">
+                                <rect key="frame" x="0.0" y="246" width="414" height="650"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Z8R-51-sgH" id="3xN-La-IlT"/>
+                                    <outlet property="delegate" destination="Z8R-51-sgH" id="9CT-3a-O96"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0Y3-ch-i1u" firstAttribute="centerX" secondItem="ljm-uj-R6O" secondAttribute="centerX" id="19o-pC-FaL"/>
+                            <constraint firstItem="b0C-Z6-0KK" firstAttribute="bottom" secondItem="ViZ-9v-ggP" secondAttribute="bottom" constant="-34" id="ES5-Hz-NAH"/>
+                            <constraint firstItem="0Y3-ch-i1u" firstAttribute="top" secondItem="b0C-Z6-0KK" secondAttribute="top" constant="35" id="EVt-Jq-gH3"/>
+                            <constraint firstItem="ViZ-9v-ggP" firstAttribute="trailing" secondItem="0Y3-ch-i1u" secondAttribute="trailing" id="L4h-Zi-KRL"/>
+                            <constraint firstItem="ViZ-9v-ggP" firstAttribute="top" secondItem="0Y3-ch-i1u" secondAttribute="bottom" constant="84.5" id="WKS-zP-2hn"/>
+                            <constraint firstItem="0Y3-ch-i1u" firstAttribute="leading" secondItem="b0C-Z6-0KK" secondAttribute="leading" id="f4J-70-0T0"/>
+                            <constraint firstItem="ViZ-9v-ggP" firstAttribute="leading" secondItem="0Y3-ch-i1u" secondAttribute="leading" id="fSB-Fk-pMM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="b0C-Z6-0KK"/>
                     </view>
                     <navigationItem key="navigationItem" id="Yrs-jV-yma"/>
                     <connections>
                         <outlet property="characterName" destination="0Y3-ch-i1u" id="5nV-iw-4mQ"/>
-                        <outlet property="tableView" destination="29I-sB-LIx" id="n51-lg-Z8m"/>
+                        <outlet property="tableView" destination="ViZ-9v-ggP" id="Gpb-2m-egA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPy-AA-Vf3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

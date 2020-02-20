@@ -19,28 +19,16 @@ class MainTableViewController: UIViewController, UITableViewDataSource,UITableVi
     var filteredHeroes: [CharacterDTO]!
     
     var selectedRow: IndexPath!
-           
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
+        loadData()
         filteredHeroes = jsonData
         self.view.backgroundColor = UIColor.white
         self.navigationItem.title = "Star wars demo v 1.0"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         registerCell()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        loadData()
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredHeroes = searchText.isEmpty ? jsonData : jsonData.filter { (item: CharacterDTO) -> Bool in
-            return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        }
-        
-        tableView.reloadData()
     }
     
     private func registerCell() {
@@ -51,7 +39,7 @@ class MainTableViewController: UIViewController, UITableViewDataSource,UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as? SearchCell{
             cell.nameLabel.text = filteredHeroes[indexPath.row].name
-            cell.typeLabel.text = "Сharacter"
+            cell.typeLabel.text = "Char"
             return cell
         }
         return UITableViewCell()
@@ -79,7 +67,6 @@ class MainTableViewController: UIViewController, UITableViewDataSource,UITableVi
         switch segue.identifier {
         case "showHeroCard":
             let vc = segue.destination as! DetailedInfoController
-            vc.name = filteredHeroes[selectedRow.row].name
             vc.character = filteredHeroes[selectedRow.row]
         default:
             break
@@ -92,10 +79,24 @@ class MainTableViewController: UIViewController, UITableViewDataSource,UITableVi
             if error != nil {
                 print(error?.localizedDescription as Any)
             }
-            self.jsonData = RowMapper.mapArray(json: data!)
-            print(self.jsonData)
+            self.jsonData = UtilsService.mapArray(json: data!)
         }
         task.resume()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredHeroes = searchText.isEmpty ? jsonData : jsonData.filter { (item: CharacterDTO) -> Bool in
+            return item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        tableView.reloadData()
     }
     
     

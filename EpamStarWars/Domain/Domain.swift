@@ -37,6 +37,19 @@ struct CharacterDTO: Decodable{
     var birthYear: String
     var gender: String
     
+    public func getParametersMap()->[String: String]{
+        var dict:[String: String] = [:]
+        dict.updateValue(self.name, forKey: "name")
+        dict.updateValue(self.height, forKey: "height")
+        dict.updateValue(self.mass, forKey: "mass")
+        dict.updateValue(self.hairColor, forKey: "hairColor")
+        dict.updateValue(self.skinColor, forKey: "skinColor")
+        dict.updateValue(self.eyeColor, forKey: "eyeColor")
+        dict.updateValue(self.birthYear, forKey: "birthYear")
+        dict.updateValue(self.gender, forKey: "gender")
+        return dict
+    }
+    
     enum CodingKeys: String, CodingKey {
         case name
         case height
